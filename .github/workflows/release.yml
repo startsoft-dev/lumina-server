@@ -1,0 +1,43 @@
+name: Release to Packagist
+
+on:
+  push:
+    branches:
+      - 'release/**'
+    tags:
+      - 'v*'
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    name: Run tests before release
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: mbstring, sqlite3
+          coverage: none
+
+      - name: Install dependencies
+        run: composer install --no-interaction --prefer-dist
+
+      - name: Run tests
+        run: vendor/bin/phpunit
+
+  release:
+    needs: tests
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/v')
+    name: Update Packagist
+
+    steps:
+      - name: Notify Packagist
+        run: |
+          curl -XPOST \
+            -H 'Content-Type: application/json' \
+            "https://packagist.org/api/update-package?username=${{ secrets.PACKAGIST_USERNAME }}&apiToken=${{ secrets.PACKAGIST_TOKEN }}" \
+            -d '{"repository":{"url":"https://github.com/${{ github.repository }}"}}'

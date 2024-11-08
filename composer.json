@@ -1,0 +1,41 @@
+{
+    "name": "startsoft/lumina",
+    "description": "Automatic REST API generation for Laravel Eloquent models with built-in security, validation, and advanced querying",
+    "type": "library",
+    "license": "MIT",
+    "homepage": "https://github.com/startsoft-dev/lumina-server",
+    "keywords": ["laravel", "api", "crud", "rest", "multi-tenant", "eloquent", "lumina"],
+    "authors": [
+        {
+            "name": "Bruno Cipolla",
+            "email": "bruno@startsoft.com.br"
+        }
+    ],
+    "require": {
+        "php": "^8.0",
+        "spatie/laravel-query-builder": "^6.2"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^10.0",
+        "phpunit/phpunit": "^11.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Lumina\\LaravelApi\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Lumina\\LaravelApi\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Lumina\\LaravelApi\\GlobalControllerServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

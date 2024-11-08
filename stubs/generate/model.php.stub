@@ -1,0 +1,67 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Lumina\LaravelApi\Traits\HasValidation;
+use Lumina\LaravelApi\Traits\HasAutoScope;
+use Lumina\LaravelApi\Traits\HidableColumns;
+// use Lumina\LaravelApi\Traits\HasAuditTrail;
+// use Lumina\LaravelApi\Traits\HasUuid;
+// use Lumina\LaravelApi\Traits\BelongsToOrganization;
+{{ imports }}
+
+class {{ class }} extends Model
+{
+    use HasFactory, SoftDeletes, HasValidation, HidableColumns, HasAutoScope;
+    // use HasAuditTrail;
+    // use HasUuid;
+    // use BelongsToOrganization;
+
+    protected $fillable = {{ fillable }};
+
+    // ---------------------------------------------------------------
+    // Validation rules
+    // ---------------------------------------------------------------
+
+    protected $validationRules = {{ validationRules }};
+
+    protected $validationRulesStore = {{ validationRulesStore }};
+    protected $validationRulesUpdate = {{ validationRulesUpdate }};
+
+    // ---------------------------------------------------------------
+    // Query Builder configuration (used by Lumina's GlobalController)
+    // ---------------------------------------------------------------
+
+    public static $allowedFilters = {{ allowedFilters }};
+    public static $allowedSorts = {{ allowedSorts }};
+    public static $defaultSort = 'created_at';
+    public static $allowedFields = {{ allowedFields }};
+    public static $allowedIncludes = {{ allowedIncludes }};
+    // public static $allowedSearch = [];
+
+    // ---------------------------------------------------------------
+    // Pagination (uncomment to enable default pagination)
+    // ---------------------------------------------------------------
+    // public static bool $paginationEnabled = false;
+    // protected $perPage = 25;
+
+    // ---------------------------------------------------------------
+    // Middleware (uncomment to add per-model middleware)
+    // ---------------------------------------------------------------
+    // public static array $middleware = [];
+    // public static array $middlewareActions = [];
+
+    // ---------------------------------------------------------------
+    // Exclude actions (uncomment to disable specific CRUD endpoints)
+    // ---------------------------------------------------------------
+    // public static array $exceptActions = [];
+
+    // ---------------------------------------------------------------
+    // Hidden columns (add columns to hide from API responses)
+    // ---------------------------------------------------------------
+    // protected static $additionalHiddenColumns = [];
+{{ organizationScoping }}{{ relationships }}
+}
