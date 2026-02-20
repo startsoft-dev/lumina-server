@@ -75,16 +75,16 @@ class ExportPostmanTest extends TestCase
     {
         parent::getEnvironmentSetUp($app);
 
-        $app['config']->set('global-controller.models', [
+        $app['config']->set('lumina.models', [
             'exportPosts' => ExportPostModel::class,
             'exportPostsSoft' => ExportPostModelWithSoftDeletes::class,
             'exportPostsExcept' => ExportPostModelWithExcept::class,
         ]);
-        $app['config']->set('global-controller.public', ['exportPostsExcept']);
-        $app['config']->set('global-controller.multi_tenant.enabled', false);
-        $app['config']->set('global-controller.postman.role_class', 'App\Models\Role');
-        $app['config']->set('global-controller.postman.user_role_class', 'App\Models\UserRole');
-        $app['config']->set('global-controller.postman.user_class', 'App\Models\User');
+        $app['config']->set('lumina.public', ['exportPostsExcept']);
+        $app['config']->set('lumina.multi_tenant.enabled', false);
+        $app['config']->set('lumina.postman.role_class', 'App\Models\Role');
+        $app['config']->set('lumina.postman.user_role_class', 'App\Models\UserRole');
+        $app['config']->set('lumina.postman.user_class', 'App\Models\User');
     }
 
     public function test_collection_json_is_valid_and_has_correct_structure(): void

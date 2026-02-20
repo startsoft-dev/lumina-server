@@ -64,9 +64,9 @@ class RouteRegistrationTest extends TestCase
         ];
 
         config([
-            'global-controller.models' => $models,
-            'global-controller.public' => $public,
-            'global-controller.multi_tenant' => array_merge($defaultMultiTenant, $multiTenant),
+            'lumina.models' => $models,
+            'lumina.public' => $public,
+            'lumina.multi_tenant' => array_merge($defaultMultiTenant, $multiTenant),
         ]);
 
         // Load routes within the api prefix to match real app behavior

@@ -37,9 +37,9 @@ class OrganizationResourceScopeTest extends TestCase
     protected function registerRoutes(): void
     {
         config([
-            'global-controller.models' => ['organizations' => \App\Models\Organization::class],
-            'global-controller.public' => [],
-            'global-controller.multi_tenant' => [
+            'lumina.models' => ['organizations' => \App\Models\Organization::class],
+            'lumina.public' => [],
+            'lumina.multi_tenant' => [
                 'enabled' => true,
                 'use_subdomain' => false,
                 'organization_identifier_column' => 'slug',

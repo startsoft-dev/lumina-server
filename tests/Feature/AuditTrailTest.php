@@ -134,9 +134,9 @@ class AuditTrailTest extends TestCase
     protected function registerRoutes(array $models, array $public = []): void
     {
         config([
-            'global-controller.models' => $models,
-            'global-controller.public' => $public,
-            'global-controller.multi_tenant' => [
+            'lumina.models' => $models,
+            'lumina.public' => $public,
+            'lumina.multi_tenant' => [
                 'enabled' => false,
                 'use_subdomain' => false,
                 'organization_identifier_column' => 'id',

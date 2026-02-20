@@ -170,7 +170,7 @@ class PermissionTest extends TestCase
         $user = $this->createUserWithPermissions(['posts.index']);
 
         Gate::policy(PermissionPost::class, ExplicitSlugPolicy::class);
-        config(['global-controller.models' => ['posts' => PermissionPost::class]]);
+        config(['lumina.models' => ['posts' => PermissionPost::class]]);
 
         $policy = new ExplicitSlugPolicy();
 
@@ -182,7 +182,7 @@ class PermissionTest extends TestCase
         $user = $this->createUserWithPermissions(['posts.index']);
 
         Gate::policy(PermissionPost::class, ExplicitSlugPolicy::class);
-        config(['global-controller.models' => ['posts' => PermissionPost::class]]);
+        config(['lumina.models' => ['posts' => PermissionPost::class]]);
 
         $policy = new ExplicitSlugPolicy();
 
@@ -192,7 +192,7 @@ class PermissionTest extends TestCase
 
     public function test_guest_user_is_denied(): void
     {
-        config(['global-controller.models' => ['posts' => PermissionPost::class]]);
+        config(['lumina.models' => ['posts' => PermissionPost::class]]);
 
         $policy = new ExplicitSlugPolicy();
 
@@ -212,7 +212,7 @@ class PermissionTest extends TestCase
         $user = $this->createUserWithPermissions(['*']);
 
         Gate::policy(PermissionPost::class, ExplicitSlugPolicy::class);
-        config(['global-controller.models' => ['posts' => PermissionPost::class]]);
+        config(['lumina.models' => ['posts' => PermissionPost::class]]);
 
         $policy = new ExplicitSlugPolicy();
 
@@ -228,7 +228,7 @@ class PermissionTest extends TestCase
         $user = $this->createUserWithPermissions(['posts.*']);
 
         Gate::policy(PermissionPost::class, ExplicitSlugPolicy::class);
-        config(['global-controller.models' => ['posts' => PermissionPost::class]]);
+        config(['lumina.models' => ['posts' => PermissionPost::class]]);
 
         $policy = new ExplicitSlugPolicy();
 
@@ -246,7 +246,7 @@ class PermissionTest extends TestCase
     public function test_each_action_maps_to_correct_permission(): void
     {
         Gate::policy(PermissionPost::class, ExplicitSlugPolicy::class);
-        config(['global-controller.models' => ['posts' => PermissionPost::class]]);
+        config(['lumina.models' => ['posts' => PermissionPost::class]]);
 
         $post = new PermissionPost();
 
@@ -297,7 +297,7 @@ class PermissionTest extends TestCase
         $user = $this->createUserWithPermissions(['posts.index', 'posts.show', 'posts.store']);
 
         Gate::policy(PermissionPost::class, ExplicitSlugPolicy::class);
-        config(['global-controller.models' => ['posts' => PermissionPost::class]]);
+        config(['lumina.models' => ['posts' => PermissionPost::class]]);
 
         $policy = new ExplicitSlugPolicy();
         $post = new PermissionPost();
@@ -318,7 +318,7 @@ class PermissionTest extends TestCase
         $user = $this->createUserWithoutPermissions();
 
         Gate::policy(PermissionPost::class, ExplicitSlugPolicy::class);
-        config(['global-controller.models' => ['posts' => PermissionPost::class]]);
+        config(['lumina.models' => ['posts' => PermissionPost::class]]);
 
         $policy = new ExplicitSlugPolicy();
 
@@ -335,7 +335,7 @@ class PermissionTest extends TestCase
         $user = $this->createUserWithPermissions(['posts.destroy']);
 
         Gate::policy(PermissionPost::class, OverrideWithParentPolicy::class);
-        config(['global-controller.models' => ['posts' => PermissionPost::class]]);
+        config(['lumina.models' => ['posts' => PermissionPost::class]]);
 
         $policy = new OverrideWithParentPolicy();
 
@@ -356,7 +356,7 @@ class PermissionTest extends TestCase
         $user = $this->createUserWithPermissions(['posts.index']);
 
         Gate::policy(PermissionPost::class, OverrideWithParentPolicy::class);
-        config(['global-controller.models' => ['posts' => PermissionPost::class]]);
+        config(['lumina.models' => ['posts' => PermissionPost::class]]);
 
         $policy = new OverrideWithParentPolicy();
 
@@ -372,7 +372,7 @@ class PermissionTest extends TestCase
         $user = $this->createUserWithoutPermissions(3);
 
         Gate::policy(PermissionPost::class, FullOverridePolicy::class);
-        config(['global-controller.models' => ['posts' => PermissionPost::class]]);
+        config(['lumina.models' => ['posts' => PermissionPost::class]]);
 
         $policy = new FullOverridePolicy();
 
@@ -392,7 +392,7 @@ class PermissionTest extends TestCase
         $user = $this->createUserWithPermissions(['posts.index']);
 
         Gate::policy(PermissionPost::class, PermissionPostPolicy::class);
-        config(['global-controller.models' => ['posts' => PermissionPost::class]]);
+        config(['lumina.models' => ['posts' => PermissionPost::class]]);
 
         $policy = new PermissionPostPolicy();
 
@@ -447,7 +447,7 @@ class PermissionTest extends TestCase
         ]);
 
         Gate::policy(PermissionPost::class, ExplicitSlugPolicy::class);
-        config(['global-controller.models' => ['posts' => PermissionPost::class]]);
+        config(['lumina.models' => ['posts' => PermissionPost::class]]);
 
         $policy = new ExplicitSlugPolicy();
 

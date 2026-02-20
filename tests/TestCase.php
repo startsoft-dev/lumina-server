@@ -64,7 +64,7 @@ abstract class TestCase extends Orchestra
             'prefix' => '',
         ]);
 
-        // Setup global-controller config
+        // Setup lumina config
         $app['config']->set('lumina', [
             'models' => [],
             'public' => [],

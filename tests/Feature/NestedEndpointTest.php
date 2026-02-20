@@ -141,15 +141,15 @@ class NestedEndpointTest extends TestCase
     protected function registerRoutes(array $models, array $nestedConfig = []): void
     {
         $config = [
-            'global-controller.models' => $models,
-            'global-controller.public' => [],
-            'global-controller.multi_tenant' => [
+            'lumina.models' => $models,
+            'lumina.public' => [],
+            'lumina.multi_tenant' => [
                 'enabled' => false,
                 'use_subdomain' => false,
                 'organization_identifier_column' => 'id',
                 'middleware' => null,
             ],
-            'global-controller.nested' => array_merge([
+            'lumina.nested' => array_merge([
                 'path' => 'nested',
                 'max_operations' => 50,
                 'allowed_models' => null,

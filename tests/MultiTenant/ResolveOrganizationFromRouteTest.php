@@ -17,8 +17,8 @@ class ResolveOrganizationFromRouteTest extends TestCase
         parent::setUp();
 
         // Enable multi-tenant
-        config(['global-controller.multi_tenant.enabled' => true]);
-        config(['global-controller.multi_tenant.organization_identifier_column' => 'slug']);
+        config(['lumina.multi_tenant.enabled' => true]);
+        config(['lumina.multi_tenant.organization_identifier_column' => 'slug']);
 
         // Create organizations table
         $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
