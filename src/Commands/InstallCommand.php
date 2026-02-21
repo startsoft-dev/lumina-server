@@ -35,7 +35,6 @@ class InstallCommand extends Command
                 'publish' => 'Publish config & routes',
                 'multi_tenant' => 'Multi-tenant support (Organizations, Roles)',
                 'audit_trail' => 'Audit trail (change logging)',
-                'cursor' => 'Cursor AI toolkit (rules, skills, agents)',
             ],
             default: ['publish'],
             required: true,
@@ -89,10 +88,6 @@ class InstallCommand extends Command
         if (in_array('publish', $features)) {
             $this->publishConfig($testFramework);
             $this->publishRoutes();
-        }
-
-        if (in_array('cursor', $features)) {
-            $this->publishCursor();
         }
 
         if (in_array('multi_tenant', $features)) {
@@ -220,16 +215,6 @@ class InstallCommand extends Command
             $this->callSilently('vendor:publish', [
                 '--provider' => 'Lumina\LaravelApi\GlobalControllerServiceProvider',
                 '--tag' => 'routes',
-            ]);
-        });
-    }
-
-    protected function publishCursor(): void
-    {
-        $this->components->task('Publishing Cursor AI toolkit', function () {
-            $this->callSilently('vendor:publish', [
-                '--provider' => 'Lumina\LaravelApi\GlobalControllerServiceProvider',
-                '--tag' => 'cursor',
             ]);
         });
     }

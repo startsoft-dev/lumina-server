@@ -28,13 +28,6 @@ class GlobalControllerServiceProvider extends ServiceProvider
             __DIR__.'/../config/lumina.php' => config_path('lumina.php'),
         ], 'config');
 
-        // Publish .cursor AI toolkit (rules, skills, subagents)
-        $this->publishes([
-            __DIR__.'/../.cursor/rules' => base_path('.cursor/rules'),
-            __DIR__.'/../.cursor/skills' => base_path('.cursor/skills'),
-            __DIR__.'/../.cursor/agents' => base_path('.cursor/agents'),
-        ], 'cursor');
-
         // Register invitation policy
         Gate::policy(OrganizationInvitation::class, InvitationPolicy::class);
 
